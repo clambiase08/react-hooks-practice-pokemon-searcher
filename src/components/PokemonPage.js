@@ -16,14 +16,19 @@ function PokemonPage() {
       .then((res) => res.json())
       .then((pokemonData) => setPokemon(pokemonData));
   }, []);
-
+  
+  const onAddPokemon = (newPokemon) => {
+    setPokemon([...pokemon, newPokemon])
+  }
+  
   const searchedPokemon = pokemon.filter((pokemon) => pokemon.name.includes(query.query))
+
 
   return (
     <Container>
       <h1>Pokemon Searcher</h1>
       <br />
-      <PokemonForm />
+      <PokemonForm onAddPokemon={onAddPokemon}/>
       <br />
       <Search query={query} setQuery={setQuery} pokemon={pokemon} />
       <br />
