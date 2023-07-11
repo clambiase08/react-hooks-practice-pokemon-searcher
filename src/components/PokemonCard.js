@@ -1,19 +1,18 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Card } from "semantic-ui-react";
 
-function PokemonCard({pokemon}) {
+function PokemonCard({ pokemon }) {
+  const [sprite, setSprite] = useState("front");
 
-  const [sprite, setSprite] = useState("front")
+  function toggleSprite() {
+    setSprite((sprite) => !sprite);
+  }
 
-function toggleSprite() {
-  setSprite(sprite => !sprite)
-}
-
-const spriteDisplay = sprite ? pokemon.sprites.front : pokemon.sprites.back
+  const spriteDisplay = sprite ? pokemon.sprites.front : pokemon.sprites.back;
 
   return (
     <Card>
-      <div onClick={toggleSprite} >
+      <div onClick={toggleSprite}>
         <div className="image">
           <img src={spriteDisplay} alt="oh no!" />
         </div>
